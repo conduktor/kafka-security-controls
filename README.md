@@ -1,6 +1,6 @@
 # Kafka Security Controls
 
-A comprehensive mapping of **110 Apache Kafka security controls** to industry standards (CWE, NIST 800-53, PCI-DSS).
+A comprehensive mapping of **118 Apache Kafka security controls** to industry standards (CWE, NIST 800-53, PCI-DSS).
 
 ## Overview
 
@@ -13,7 +13,7 @@ This repository provides a structured catalog of security controls for Apache Ka
 - **Availability** - Replication, disaster recovery, quotas
 - **Network Security** - Listener isolation, segmentation
 - **Infrastructure** - ZooKeeper, KRaft security
-- **Ecosystem** - Kafka Connect, Schema Registry, REST Proxy, MirrorMaker 2
+- **Ecosystem** - Kafka Connect, Schema Registry, REST Proxy, MirrorMaker 2, Kafka Streams
 - **Data Protection** - Encryption, masking, PII handling, lineage, data contracts
 - **Operations** - Patching, hardening, IaC, incident response
 - **Monitoring** - Security metrics, anomaly detection, alerting
@@ -61,14 +61,14 @@ Kafka Security Control → CWE → OpenCRE → Other Standards
 
 | Category | Count | Description |
 |----------|-------|-------------|
-| Authentication | 12 | Identity verification mechanisms |
-| Encryption | 9 | Data protection in transit and at rest |
+| Authentication | 14 | Identity verification mechanisms |
+| Encryption | 10 | Data protection in transit and at rest |
 | Authorization | 15 | Access control and permissions |
 | Audit | 10 | Logging and compliance tracking |
 | Availability | 11 | HA, DR, and resource quotas |
 | Network Security | 5 | Network isolation and segmentation |
-| Infrastructure | 6 | ZooKeeper and KRaft security |
-| Ecosystem | 12 | Connect, Schema Registry, REST, MM2 |
+| Infrastructure | 8 | ZooKeeper and KRaft security |
+| Ecosystem | 15 | Connect, Schema Registry, REST, MM2, Streams |
 | Data Protection | 13 | Encryption, masking, lineage, contracts |
 | Operations | 11 | Hardening, patching, IaC |
 | Monitoring | 6 | Metrics, alerts, anomaly detection |
@@ -79,8 +79,8 @@ When using [Conduktor Gateway](https://conduktor.io) as a Kafka proxy with the C
 
 | Verification Level | Controls | Coverage |
 |-------------------|----------|----------|
-| Fully Automated | 100 | 91% |
-| Partially Automated | 5 | 5% |
+| Fully Automated | 107 | 91% |
+| Partially Automated | 6 | 5% |
 | Manual Attestation | 5 | 4% |
 
 ## Usage Examples
