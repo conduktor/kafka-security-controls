@@ -2,6 +2,8 @@
 
 A comprehensive mapping of **118 Apache Kafka security controls** to industry standards (CWE, NIST 800-53, PCI-DSS).
 
+**[View Interactive Controls Browser](https://conduktor.github.io/kafka-security-controls)**
+
 ## Overview
 
 This repository provides a structured catalog of security controls for Apache Kafka deployments, covering:
