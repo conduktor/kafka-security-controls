@@ -9,48 +9,55 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Core palette - refined dark with warm accents */
-      --bg-deep: #0a0b0d;
-      --bg-surface: #12141a;
-      --bg-elevated: #1a1d24;
-      --bg-hover: #22262f;
+      /* Light theme - clean, professional, airy */
+      --bg-page: #f8f9fb;
+      --bg-surface: #ffffff;
+      --bg-elevated: #ffffff;
+      --bg-hover: #f3f4f6;
+      --bg-inset: #f0f1f3;
 
-      --border-subtle: #2a2f3a;
-      --border-default: #3a4150;
+      --border-subtle: #e5e7eb;
+      --border-default: #d1d5db;
+      --border-focus: #6366f1;
 
-      --text-primary: #f0f2f5;
-      --text-secondary: #9ca3af;
-      --text-muted: #6b7280;
+      --text-primary: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #9ca3af;
 
-      /* Category colors - distinctive and saturated */
-      --color-auth: #f59e0b;
-      --color-enc: #10b981;
-      --color-authz: #8b5cf6;
-      --color-audit: #3b82f6;
-      --color-avail: #ec4899;
-      --color-net: #06b6d4;
-      --color-infra: #f43f5e;
-      --color-eco: #84cc16;
-      --color-data: #a855f7;
-      --color-ops: #f97316;
-      --color-mon: #14b8a6;
+      /* Accent - indigo/violet */
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --accent-subtle: #eef2ff;
 
-      /* Framework badge colors */
-      --cwe-bg: #7c3aed20;
-      --cwe-text: #a78bfa;
-      --cwe-border: #7c3aed40;
+      /* Category colors - vibrant but balanced for light bg */
+      --color-auth: #d97706;
+      --color-enc: #059669;
+      --color-authz: #7c3aed;
+      --color-audit: #2563eb;
+      --color-avail: #db2777;
+      --color-net: #0891b2;
+      --color-infra: #dc2626;
+      --color-eco: #65a30d;
+      --color-data: #9333ea;
+      --color-ops: #ea580c;
+      --color-mon: #0d9488;
 
-      --nist-bg: #0ea5e920;
-      --nist-text: #67e8f9;
-      --nist-border: #0ea5e940;
+      /* Framework badge colors - light theme optimized */
+      --cwe-bg: #faf5ff;
+      --cwe-text: #7c3aed;
+      --cwe-border: #e9d5ff;
 
-      --pci-bg: #f9731620;
-      --pci-text: #fdba74;
-      --pci-border: #f9731640;
+      --nist-bg: #eff6ff;
+      --nist-text: #2563eb;
+      --nist-border: #bfdbfe;
+
+      --pci-bg: #fff7ed;
+      --pci-text: #ea580c;
+      --pci-border: #fed7aa;
 
       /* Spacing */
       --space-xs: 4px;
@@ -61,12 +68,20 @@
       --space-2xl: 48px;
 
       /* Typography */
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-sans: 'Outfit', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
       /* Effects */
-      --glow-subtle: 0 0 20px rgba(139, 92, 246, 0.1);
-      --shadow-elevated: 0 4px 24px rgba(0, 0, 0, 0.4);
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.15);
+
+      /* Border radius */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-full: 9999px;
     }
 
     * {
@@ -82,35 +97,21 @@
 
     body {
       font-family: var(--font-sans);
-      background: var(--bg-deep);
+      background: var(--bg-page);
       color: var(--text-primary);
       min-height: 100vh;
       line-height: 1.6;
     }
 
-    /* Animated grid background */
-    .bg-pattern {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     .container {
-      position: relative;
-      z-index: 1;
-      max-width: 1600px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: var(--space-lg);
+      padding: var(--space-xl);
     }
 
     /* Header */
     header {
-      margin-bottom: var(--space-2xl);
+      margin-bottom: var(--space-xl);
       padding-bottom: var(--space-xl);
       border-bottom: 1px solid var(--border-subtle);
     }
@@ -123,32 +124,34 @@
     }
 
     .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--color-authz) 0%, var(--color-auth) 100%);
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--color-authz) 100%);
+      border-radius: var(--radius-md);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 20px;
+      box-shadow: var(--shadow-md);
     }
 
     h1 {
-      font-family: var(--font-mono);
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
+      font-family: var(--font-sans);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
     }
 
     h1 span {
       color: var(--text-muted);
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .subtitle {
       color: var(--text-secondary);
-      font-size: 1.1rem;
-      margin-top: var(--space-sm);
+      font-size: 1rem;
+      margin-top: var(--space-xs);
     }
 
     .stats-row {
@@ -166,26 +169,24 @@
 
     .stat-value {
       font-family: var(--font-mono);
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
     }
 
     .stat-label {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      font-weight: 500;
     }
 
     /* Search and filters */
     .controls-bar {
       display: flex;
       gap: var(--space-md);
-      margin-bottom: var(--space-xl);
+      margin-bottom: var(--space-lg);
       flex-wrap: wrap;
       align-items: stretch;
     }
@@ -198,21 +199,22 @@
 
     .search-box input {
       width: 100%;
-      padding: var(--space-md) var(--space-lg);
-      padding-left: 48px;
+      padding: 12px var(--space-md);
+      padding-left: 44px;
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
+      border-radius: var(--radius-md);
       color: var(--text-primary);
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-size: 0.95rem;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
+      box-shadow: var(--shadow-sm);
     }
 
     .search-box input:focus {
       outline: none;
-      border-color: var(--color-authz);
-      box-shadow: var(--glow-subtle);
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-focus);
     }
 
     .search-box input::placeholder {
@@ -226,7 +228,7 @@
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
 
     .filter-group {
@@ -236,16 +238,18 @@
     }
 
     .filter-btn {
-      padding: var(--space-sm) var(--space-md);
+      padding: 10px var(--space-md);
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
+      border-radius: var(--radius-sm);
       color: var(--text-secondary);
       font-family: var(--font-sans);
       font-size: 0.85rem;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.15s ease;
       white-space: nowrap;
+      box-shadow: var(--shadow-sm);
     }
 
     .filter-btn:hover {
@@ -255,9 +259,10 @@
     }
 
     .filter-btn.active {
-      background: var(--color-authz);
-      border-color: var(--color-authz);
+      background: var(--accent);
+      border-color: var(--accent);
       color: white;
+      box-shadow: var(--shadow-md);
     }
 
     /* Category pills */
@@ -269,33 +274,34 @@
     }
 
     .category-pill {
-      padding: var(--space-xs) var(--space-md);
-      border-radius: 20px;
+      padding: 6px var(--space-md);
+      border-radius: var(--radius-full);
       font-size: 0.8rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.15s ease;
       border: 1px solid transparent;
-      opacity: 0.6;
+      opacity: 0.7;
     }
 
     .category-pill:hover,
     .category-pill.active {
       opacity: 1;
-      transform: scale(1.02);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
     }
 
-    .category-pill[data-category="Authentication"] { background: rgba(245, 158, 11, 0.15); color: var(--color-auth); border-color: rgba(245, 158, 11, 0.3); }
-    .category-pill[data-category="Encryption"] { background: rgba(16, 185, 129, 0.15); color: var(--color-enc); border-color: rgba(16, 185, 129, 0.3); }
-    .category-pill[data-category="Authorization"] { background: rgba(139, 92, 246, 0.15); color: var(--color-authz); border-color: rgba(139, 92, 246, 0.3); }
-    .category-pill[data-category="Audit"] { background: rgba(59, 130, 246, 0.15); color: var(--color-audit); border-color: rgba(59, 130, 246, 0.3); }
-    .category-pill[data-category="Availability"] { background: rgba(236, 72, 153, 0.15); color: var(--color-avail); border-color: rgba(236, 72, 153, 0.3); }
-    .category-pill[data-category="Network Security"] { background: rgba(6, 182, 212, 0.15); color: var(--color-net); border-color: rgba(6, 182, 212, 0.3); }
-    .category-pill[data-category="Infrastructure"] { background: rgba(244, 63, 94, 0.15); color: var(--color-infra); border-color: rgba(244, 63, 94, 0.3); }
-    .category-pill[data-category="Ecosystem"] { background: rgba(132, 204, 22, 0.15); color: var(--color-eco); border-color: rgba(132, 204, 22, 0.3); }
-    .category-pill[data-category="Data Protection"] { background: rgba(168, 85, 247, 0.15); color: var(--color-data); border-color: rgba(168, 85, 247, 0.3); }
-    .category-pill[data-category="Operations"] { background: rgba(249, 115, 22, 0.15); color: var(--color-ops); border-color: rgba(249, 115, 22, 0.3); }
-    .category-pill[data-category="Monitoring"] { background: rgba(20, 184, 166, 0.15); color: var(--color-mon); border-color: rgba(20, 184, 166, 0.3); }
+    .category-pill[data-category="Authentication"] { background: #fef3c7; color: var(--color-auth); border-color: #fcd34d; }
+    .category-pill[data-category="Encryption"] { background: #d1fae5; color: var(--color-enc); border-color: #6ee7b7; }
+    .category-pill[data-category="Authorization"] { background: #ede9fe; color: var(--color-authz); border-color: #c4b5fd; }
+    .category-pill[data-category="Audit"] { background: #dbeafe; color: var(--color-audit); border-color: #93c5fd; }
+    .category-pill[data-category="Availability"] { background: #fce7f3; color: var(--color-avail); border-color: #f9a8d4; }
+    .category-pill[data-category="Network Security"] { background: #cffafe; color: var(--color-net); border-color: #67e8f9; }
+    .category-pill[data-category="Infrastructure"] { background: #fee2e2; color: var(--color-infra); border-color: #fca5a5; }
+    .category-pill[data-category="Ecosystem"] { background: #ecfccb; color: var(--color-eco); border-color: #bef264; }
+    .category-pill[data-category="Data Protection"] { background: #f3e8ff; color: var(--color-data); border-color: #d8b4fe; }
+    .category-pill[data-category="Operations"] { background: #ffedd5; color: var(--color-ops); border-color: #fdba74; }
+    .category-pill[data-category="Monitoring"] { background: #ccfbf1; color: var(--color-mon); border-color: #5eead4; }
 
     /* Results count */
     .results-info {
@@ -304,12 +310,13 @@
       align-items: center;
       margin-bottom: var(--space-md);
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.875rem;
     }
 
     .results-info strong {
       color: var(--text-primary);
       font-family: var(--font-mono);
+      font-weight: 600;
     }
 
     /* Controls grid */
@@ -321,22 +328,23 @@
     .control-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       padding: var(--space-lg);
       transition: all 0.2s ease;
       animation: fadeIn 0.3s ease forwards;
       opacity: 0;
+      box-shadow: var(--shadow-sm);
     }
 
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
     }
 
     .control-card:hover {
       border-color: var(--border-default);
-      background: var(--bg-elevated);
-      box-shadow: var(--shadow-elevated);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
     }
 
     .card-header {
@@ -350,35 +358,35 @@
     .control-id {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-muted);
-      background: var(--bg-deep);
+      background: var(--bg-inset);
       padding: var(--space-xs) var(--space-sm);
-      border-radius: 4px;
-      letter-spacing: 0.02em;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.01em;
     }
 
     .control-category {
       font-size: 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
       padding: var(--space-xs) var(--space-sm);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
     }
 
-    .control-category[data-category="Authentication"] { background: rgba(245, 158, 11, 0.15); color: var(--color-auth); }
-    .control-category[data-category="Encryption"] { background: rgba(16, 185, 129, 0.15); color: var(--color-enc); }
-    .control-category[data-category="Authorization"] { background: rgba(139, 92, 246, 0.15); color: var(--color-authz); }
-    .control-category[data-category="Audit"] { background: rgba(59, 130, 246, 0.15); color: var(--color-audit); }
-    .control-category[data-category="Availability"] { background: rgba(236, 72, 153, 0.15); color: var(--color-avail); }
-    .control-category[data-category="Network Security"] { background: rgba(6, 182, 212, 0.15); color: var(--color-net); }
-    .control-category[data-category="Infrastructure"] { background: rgba(244, 63, 94, 0.15); color: var(--color-infra); }
-    .control-category[data-category="Ecosystem"] { background: rgba(132, 204, 22, 0.15); color: var(--color-eco); }
-    .control-category[data-category="Data Protection"] { background: rgba(168, 85, 247, 0.15); color: var(--color-data); }
-    .control-category[data-category="Operations"] { background: rgba(249, 115, 22, 0.15); color: var(--color-ops); }
-    .control-category[data-category="Monitoring"] { background: rgba(20, 184, 166, 0.15); color: var(--color-mon); }
+    .control-category[data-category="Authentication"] { background: #fef3c7; color: var(--color-auth); }
+    .control-category[data-category="Encryption"] { background: #d1fae5; color: var(--color-enc); }
+    .control-category[data-category="Authorization"] { background: #ede9fe; color: var(--color-authz); }
+    .control-category[data-category="Audit"] { background: #dbeafe; color: var(--color-audit); }
+    .control-category[data-category="Availability"] { background: #fce7f3; color: var(--color-avail); }
+    .control-category[data-category="Network Security"] { background: #cffafe; color: var(--color-net); }
+    .control-category[data-category="Infrastructure"] { background: #fee2e2; color: var(--color-infra); }
+    .control-category[data-category="Ecosystem"] { background: #ecfccb; color: var(--color-eco); }
+    .control-category[data-category="Data Protection"] { background: #f3e8ff; color: var(--color-data); }
+    .control-category[data-category="Operations"] { background: #ffedd5; color: var(--color-ops); }
+    .control-category[data-category="Monitoring"] { background: #ccfbf1; color: var(--color-mon); }
 
     .control-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       margin-bottom: var(--space-xs);
       color: var(--text-primary);
@@ -409,7 +417,7 @@
 
     .framework-badges {
       display: flex;
-      gap: var(--space-sm);
+      gap: 6px;
       flex-wrap: wrap;
     }
 
@@ -418,8 +426,8 @@
       font-size: 0.7rem;
       font-weight: 500;
       padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.01em;
     }
 
     .badge-cwe {
@@ -444,14 +452,15 @@
       display: inline-flex;
       align-items: center;
       gap: var(--space-xs);
-      color: var(--text-muted);
+      color: var(--accent);
       text-decoration: none;
       font-size: 0.8rem;
+      font-weight: 500;
       transition: color 0.15s ease;
     }
 
     .doc-link:hover {
-      color: var(--color-authz);
+      color: var(--accent-hover);
     }
 
     /* Empty state */
@@ -478,8 +487,9 @@
     }
 
     footer a {
-      color: var(--color-authz);
+      color: var(--accent);
       text-decoration: none;
+      font-weight: 500;
     }
 
     footer a:hover {
@@ -497,13 +507,13 @@
 
     .loading::after {
       content: "";
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       border: 2px solid var(--border-subtle);
-      border-top-color: var(--color-authz);
+      border-top-color: var(--accent);
       border-radius: 50%;
       margin-left: var(--space-md);
-      animation: spin 0.8s linear infinite;
+      animation: spin 0.7s linear infinite;
     }
 
     @keyframes spin {
@@ -524,17 +534,15 @@
     .kbd {
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      background: var(--bg-deep);
+      background: var(--bg-inset);
       border: 1px solid var(--border-subtle);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       padding: 2px 6px;
       color: var(--text-muted);
     }
   </style>
 </head>
 <body>
-  <div class="bg-pattern"></div>
-
   <div class="container">
     <header>
       <div class="logo-row">
