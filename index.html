@@ -33,18 +33,11 @@
       --accent-hover: #4f46e5;
       --accent-subtle: #eef2ff;
 
-      /* Category colors - vibrant but balanced for light bg */
-      --color-auth: #d97706;
-      --color-enc: #059669;
-      --color-authz: #7c3aed;
-      --color-audit: #2563eb;
-      --color-avail: #db2777;
-      --color-net: #0891b2;
-      --color-infra: #dc2626;
-      --color-eco: #65a30d;
-      --color-data: #9333ea;
-      --color-ops: #ea580c;
-      --color-mon: #0d9488;
+      /* Category - single neutral tone */
+      --category-bg: #f3f4f6;
+      --category-bg-hover: #e5e7eb;
+      --category-text: #374151;
+      --category-text-active: #111827;
 
       /* Framework badge colors - light theme optimized */
       --cwe-bg: #faf5ff;
@@ -126,7 +119,7 @@
     .logo-icon {
       width: 44px;
       height: 44px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--color-authz) 100%);
+      background: var(--text-primary);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -280,28 +273,22 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.15s ease;
-      border: 1px solid transparent;
-      opacity: 0.7;
+      background: var(--category-bg);
+      color: var(--category-text);
+      border: 1px solid var(--border-subtle);
     }
 
-    .category-pill:hover,
+    .category-pill:hover {
+      background: var(--category-bg-hover);
+      color: var(--category-text-active);
+      border-color: var(--border-default);
+    }
+
     .category-pill.active {
-      opacity: 1;
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
+      background: var(--text-primary);
+      color: white;
+      border-color: var(--text-primary);
     }
-
-    .category-pill[data-category="Authentication"] { background: #fef3c7; color: var(--color-auth); border-color: #fcd34d; }
-    .category-pill[data-category="Encryption"] { background: #d1fae5; color: var(--color-enc); border-color: #6ee7b7; }
-    .category-pill[data-category="Authorization"] { background: #ede9fe; color: var(--color-authz); border-color: #c4b5fd; }
-    .category-pill[data-category="Audit"] { background: #dbeafe; color: var(--color-audit); border-color: #93c5fd; }
-    .category-pill[data-category="Availability"] { background: #fce7f3; color: var(--color-avail); border-color: #f9a8d4; }
-    .category-pill[data-category="Network Security"] { background: #cffafe; color: var(--color-net); border-color: #67e8f9; }
-    .category-pill[data-category="Infrastructure"] { background: #fee2e2; color: var(--color-infra); border-color: #fca5a5; }
-    .category-pill[data-category="Ecosystem"] { background: #ecfccb; color: var(--color-eco); border-color: #bef264; }
-    .category-pill[data-category="Data Protection"] { background: #f3e8ff; color: var(--color-data); border-color: #d8b4fe; }
-    .category-pill[data-category="Operations"] { background: #ffedd5; color: var(--color-ops); border-color: #fdba74; }
-    .category-pill[data-category="Monitoring"] { background: #ccfbf1; color: var(--color-mon); border-color: #5eead4; }
 
     /* Results count */
     .results-info {
@@ -368,22 +355,12 @@
 
     .control-category {
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 500;
       padding: var(--space-xs) var(--space-sm);
       border-radius: var(--radius-sm);
+      background: var(--category-bg);
+      color: var(--category-text);
     }
-
-    .control-category[data-category="Authentication"] { background: #fef3c7; color: var(--color-auth); }
-    .control-category[data-category="Encryption"] { background: #d1fae5; color: var(--color-enc); }
-    .control-category[data-category="Authorization"] { background: #ede9fe; color: var(--color-authz); }
-    .control-category[data-category="Audit"] { background: #dbeafe; color: var(--color-audit); }
-    .control-category[data-category="Availability"] { background: #fce7f3; color: var(--color-avail); }
-    .control-category[data-category="Network Security"] { background: #cffafe; color: var(--color-net); }
-    .control-category[data-category="Infrastructure"] { background: #fee2e2; color: var(--color-infra); }
-    .control-category[data-category="Ecosystem"] { background: #ecfccb; color: var(--color-eco); }
-    .control-category[data-category="Data Protection"] { background: #f3e8ff; color: var(--color-data); }
-    .control-category[data-category="Operations"] { background: #ffedd5; color: var(--color-ops); }
-    .control-category[data-category="Monitoring"] { background: #ccfbf1; color: var(--color-mon); }
 
     .control-title {
       font-size: 1.05rem;
